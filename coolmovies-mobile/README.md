@@ -10,6 +10,8 @@ We've setup GraphQL for you. We recommend that you work on an emulator only, the
 
 **You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
 
+**We suggest that you submit the assessment not later than a week span.**
+
 **DO NOT USE EXISTING TEMPLATES. You can copy the design but not the code, we have to evaluate you by your coding skills.**
 
 For your solution to be accepted it is required that your application is able to:
