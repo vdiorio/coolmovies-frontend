@@ -18,24 +18,22 @@ We are providing you a GraphQL API mock application to consume.
 
 ## Acceptance Criteria
 
-**You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
+**You will be evaluated on your UI/UX. We expect this to be at the level of a basic prototype; clean and clear flow.**
 
-There are 2 main components that must be developed for this feature: (You have flexibility on the UI/UX for this)
+You will be evaluated against your ability to understand and use the tooling provided and mimic existing patterns that are shown in the examples.
+
+There are 3 main components for this feature, they **MUST** be completed and working:
 
 1. Listing of the movie reviews.
 2. Editing the existing movie reviews.
 3. Adding additional reviews.
 
-The feature must be available on the `/reviews` endpoint of the application.
+Additional things we would like to see, you **must do at least 5** of these:
 
-The design must be responsive.
-
-You will be evaluated against your ability to understand and use the tooling provided and mimic existing patterns that are shown in the examples.
-
-There are a couple of additional things that we would like to see in your submission.
-
-1. Our designers don't like the default MUI blue. Please change this.
-2. Make the proxied GraphQL URL an environment variable.
-3. Improve the folder structure of the frontend application how you see fit. (It's intentionally not great)
-4. Add the custom `edit.svg` from the `public` folder as an icon to launch editing the review.
-5. Add a unit testing framework of your choice, and some unit tests around the more complex areas of your code.
+1. The feature is available on the `/reviews` endpoint of the application.
+2. The design is responsive.
+3. Our designers don't like the default MUI blue. Change this.
+4. Make the proxied GraphQL URL an environment variable.
+5. Improve the folder structure of the frontend application how you see fit. (It's intentionally not great)
+6. Add the custom `edit.svg` from the `public` folder as an icon to launch editing the review.
+7. Add a unit testing framework of your choice, and some unit tests around the more complex areas of your code.
