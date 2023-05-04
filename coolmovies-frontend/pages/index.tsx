@@ -28,8 +28,8 @@ const Home: NextPage = () => {
         <Typography variant={'subtitle1'} css={styles.subtitle}>
           {`Thank you for taking the time to take our test. We really appreciate it. 
         All the information on what is required can be found in the README at the root of this repo. 
-        Please dont spend ages on this and just get through as much of it as you can. 
-        Good luck! :) `}
+        Please don't spend ages on this and just get through as much of it as you can. 
+        Good luck! 😄`}
         </Typography>
 
         <div css={styles.mainControls}>
