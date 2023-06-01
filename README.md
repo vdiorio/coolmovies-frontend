@@ -8,11 +8,16 @@
 
 # Introduction: Coolmovies challenge
 
-Both challenges (web and mobile) requires `coolmovies-backend` running. Check it out below.
+**You only have to complete the "Challenge" relevant to the role you have applied to.**
 
-**Please do not push directly to this repo to submit your work, either submit a fork of this or create a new repo from a clone of this manually and submit that**
+**For Frontend Developers, complete the `Web version challenge`.**
+**For Mobile Developers, complete the `Mobile version challenge`.**
 
-**Please work on this project like you would your normal job. We don't want to see mono-commits and for your commit history to be "First Commit" -> "Project Finished". "First Commit" -> "Add component" -> "Add component" -> "Editing of reviews" -> ... is preferred.**
+**Do not push directly to this repo to submit your work, either submit a fork of this repo or create a new repo from a clone of this manually and submit that.**
+
+**Work on this project like you would your normal job. We don't want to see mono-commits and for your commit history to be "First Commit" -> "Project Finished".**
+
+**"First Commit" -> "Add component" -> "Add component" -> "Editing of reviews" -> ... is preferred.**
 
 # Web version challenge
 
