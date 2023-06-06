@@ -1,3 +1,10 @@
+# Important Note
+
+If submitting via a private repository, please add the following user(s) as collaborators to your repo:
+
+- GitHub `@SheepySean`
+- Gitlab `@SheepySean`
+
 # Coolmovies web challenge
 
 You have to add the cool movies review feature to the existing `coolmovies-frontend`.
