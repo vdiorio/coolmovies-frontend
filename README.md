@@ -13,7 +13,9 @@
 **For Frontend Developers, complete the `Web version challenge`.**
 **For Mobile Developers, complete the `Mobile version challenge`.**
 
-**Do not push directly to this repo to submit your work, either submit a fork of this repo or create a new repo from a clone of this manually and submit that.**
+**Your asssement has to be delivered via Git Bundle, do not upload your solution to public remote repository**
+
+**There are specific instructions on a README in the specific challenge folder**
 
 **Work on this project like you would your normal job. We don't want to see mono-commits and for your commit history to be "First Commit" -> "Project Finished".**
 
