@@ -8,7 +8,9 @@ We've setup GraphQL for you. We recommend that you work on an emulator only, the
 
 ## Acceptance Criteria
 
-**You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
+**You will be evaluated on your UI/UX as we believe this is an important skill to have.**
+
+**You also will be evaluated based on your architectural choices.**
 
 **We suggest that you submit the assessment not later than a week span.**
 
@@ -21,7 +23,11 @@ For your solution to be accepted it is required that your application is able to
 3. Each movie page must display all its reviews
 4. Each review should consist of (at least): title, body and stars (1-5)
 5. The user should be able to create new reviews
-6. The user should be able to edit their own reviews
+6. The user should be able to delete their own reviews in online mode only
+
+## Plus
+Consider adding the features below if you feel confortable and have the time
+- Unit tests
 
 Anything else is up to you (animations, assets, 3rd party dependencies, etc). We will consider all your additions so don't stick to the minimum!
 
