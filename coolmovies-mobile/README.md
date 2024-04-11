@@ -23,7 +23,6 @@ For your solution to be accepted it is required that your application is able to
 3. Each movie page must display all its reviews
 4. Each review should consist of (at least): title, body and stars (1-5)
 5. The user should be able to create new reviews
-6. The user should be able to delete their own reviews
 
 ## Plus
 Consider adding the features below if you feel confortable and have the time
