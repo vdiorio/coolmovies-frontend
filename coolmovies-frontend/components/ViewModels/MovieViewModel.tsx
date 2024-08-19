@@ -1,10 +1,10 @@
-import { Movie } from "../../../redux/types";
+import { Movie, MovieDirector } from "../../redux/types";
 
 export class MovieViewModel {
   private id: string;
   private imgUrl: string;
   private title: string;
-  private movieDirectorId: number;
+  private movieDirector: MovieDirector;
   private releaseDate: string;
   private ratings: { rating: number }[];
 
@@ -12,16 +12,16 @@ export class MovieViewModel {
     id,
     imgUrl,
     title,
-    movieDirectorId,
     releaseDate,
     movieReviewsByMovieId,
+    movieDirectorByMovieDirectorId,
   }: Movie) {
     this.id = id;
     this.imgUrl = imgUrl;
     this.title = title;
-    this.movieDirectorId = movieDirectorId;
+    this.movieDirector = movieDirectorByMovieDirectorId;
     this.releaseDate = releaseDate;
-    this.ratings = movieReviewsByMovieId.nodes;
+    this.ratings = movieReviewsByMovieId?.nodes || [];
   }
 
   public getId(): string {
@@ -36,12 +36,20 @@ export class MovieViewModel {
     return this.title;
   }
 
-  public getMovieDirectorId(): number {
-    return this.movieDirectorId;
+  public getMovieDirectorId(): string {
+    return this.movieDirector.id;
+  }
+
+  public getMovieDirectorName(): string {
+    return this.movieDirector.name;
+  }
+
+  public getMovieDirectorAge(): number {
+    return this.movieDirector.age;
   }
 
   public getReleaseDate(): string {
-    return this.releaseDate;
+    return new Date(this.releaseDate).toLocaleDateString();
   }
 
   public getRating(): number {

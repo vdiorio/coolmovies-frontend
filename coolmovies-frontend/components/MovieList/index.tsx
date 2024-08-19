@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import { movieActions, useAppDispatch, useAppSelector } from "../../redux";
 import { useEffect } from "react";
 import MovieListSkelleton from "./MovieListSkelleton";
-import MovieCard from "./MovieCard.tsx";
+import MovieCard from "./MovieCard";
 
 const MovieList = () => {
   const dispatch = useAppDispatch();

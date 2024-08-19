@@ -13,6 +13,10 @@ const useStyles = () => {
       alignItems: "center",
       background: theme.palette.background.default || "#f5f5f5", // Usando o valor do tema ou um fallback
     }),
+    headerText: css({
+      color: theme.palette.primary.contrastText,
+      fontWeight: 400,
+    }),
     navBar: css({
       backgroundColor: theme.palette.primary.main,
       height: 60,
@@ -65,6 +69,16 @@ const useStyles = () => {
         },
       },
     }),
+    headerBack: css({
+      color: theme.palette.text.primary,
+      backgroundColor: theme.palette.background.paper,
+      marginLeft: 16,
+      "&:hover": {
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.primary.contrastText,
+      },
+    }),
+
     button: css({
       marginTop: 32,
       fontSize: "1.1rem",

@@ -7,7 +7,7 @@ import {
   Rating,
   Typography,
 } from "@mui/material";
-import { MovieViewModel } from "./MovieViewModel";
+import { MovieViewModel } from "../../ViewModels/MovieViewModel";
 import { Movie } from "../../../redux/types";
 import { useRouter } from "next/router";
 
@@ -20,7 +20,7 @@ const MovieCard = ({ movie }: Props) => {
   const router = useRouter();
 
   const handleCardClick = () => {
-    router.push(`/movies/${viewModel.getId()}`);
+    router.push(`/reviews/${viewModel.getId()}`);
   };
 
   return (
