@@ -20,7 +20,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/MovieList/MovieCard.tsx"
+    "components/MovieList/MovieCard"
   ],
   "exclude": ["node_modules"]
 }
