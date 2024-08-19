@@ -7,7 +7,11 @@ export const GET_ALL_MOVIES = gql`
         id
         imgUrl
         title
-        movieDirectorId
+        movieDirectorByMovieDirectorId {
+          age
+          id
+          name
+        }
         releaseDate
         movieReviewsByMovieId {
           nodes {
@@ -29,18 +33,31 @@ export const GET_CURRENT_USER = gql`
 `;
 
 export const GET_REVIEWS_BY_MOVIE_ID = gql`
-  query GetReviewsByMovieId($movieId: ID!) {
+  query GetReviewsByMovieId($movieId: UUID!) {
     allMovieReviews(filter: { movieId: { equalTo: $movieId } }) {
       nodes {
         id
         title
         body
         rating
-        movieByMovieId {
-          title
-        }
         userByUserReviewerId {
           name
+        }
+      }
+    }
+    movieById(id: $movieId) {
+      id
+      imgUrl
+      title
+      movieDirectorByMovieDirectorId {
+        age
+        id
+        name
+      }
+      releaseDate
+      movieReviewsByMovieId {
+        nodes {
+          rating
         }
       }
     }
