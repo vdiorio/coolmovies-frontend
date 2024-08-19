@@ -1,78 +1,106 @@
 import { css } from "@emotion/react";
-import { Box, Paper, Typography } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
 import type { NextPage } from "next";
-import { movieActions, useAppDispatch, useAppSelector } from "../redux";
-import MovieList from "../components/MovieList";
+import { useRouter } from "next/router";
+import MovieIcon from "@mui/icons-material/Movie";
+import useStyles from "./style";
 
-const primary = "#1976d2";
+// Front-end test for ecoPortal selective process
+
+const primary = "#197655";
+const secondary = "#ffffff";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/reviews`);
+  };
+
+  const styles = useStyles();
+
   return (
     <div css={styles.root}>
       <Paper elevation={3} css={styles.navBar}>
-        <Typography>{"Cool movies"}</Typography>
+        <Typography variant="h6" css={styles.navText}>
+          EcoPortal
+        </Typography>
       </Paper>
 
-      <Typography variant={"h1"} css={styles.heading}>
-        {"Cool movie Reviews!"}
-      </Typography>
-      <Box css={styles.body}>
-        <MovieList />
-      </Box>
+      <div css={styles.hero}>
+        <MovieIcon css={styles.heroIcon} />
+        <Typography variant="h2" css={styles.heading}>
+          EcoPortal Coolmovies Test
+        </Typography>
+        <Typography variant="subtitle1" css={styles.subtitle}>
+          {`This is a simple movie review application made for the EcoPortal application process.`}
+        </Typography>
+        <Typography variant="subtitle1" css={styles.subtitle}>
+          {`It was created using:`}
+        </Typography>
+        <ul css={styles.techList}>
+          <li>
+            <a
+              href="https://nextjs.org/docs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Next.js
+            </a>{" "}
+            (Build Framework)
+          </li>
+          <li>
+            <a
+              href="https://mui.com/material-ui/getting-started/overview/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MUI
+            </a>{" "}
+            (Component Library)
+          </li>
+          <li>
+            <a
+              href="https://redux-toolkit.js.org/introduction/getting-started"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Redux Toolkit
+            </a>{" "}
+            (State Management)
+          </li>
+          <li>
+            <a
+              href="https://redux-observable.js.org/docs/basics/SettingUpTheMiddleware.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Redux-Observable
+            </a>{" "}
+            (State Side-effect Middleware)
+          </li>
+          <li>
+            <a
+              href="https://www.apollographql.com/docs/react/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Apollo GraphQL
+            </a>{" "}
+            (GraphQL Query Client)
+          </li>
+        </ul>
+        <Button
+          variant="contained"
+          color="secondary"
+          css={styles.button}
+          onClick={handleClick}
+        >
+          Go to reviews page
+        </Button>
+      </div>
     </div>
   );
-};
-
-const styles = {
-  root: css({
-    height: "100vh",
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  }),
-  navBar: css({
-    background: primary,
-    height: 50,
-    alignSelf: "stretch",
-    display: "flex",
-    alignItems: "center",
-    padding: 16,
-    borderRadius: 0,
-    p: {
-      color: "white",
-    },
-  }),
-  body: css({
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: 16,
-  }),
-  heading: css({
-    marginTop: 16,
-    fontSize: "2.75rem",
-    textAlign: "center",
-    marginBottom: 16,
-  }),
-  subtitle: css({
-    fontWeight: 300,
-    textAlign: "center",
-    maxWidth: 600,
-    margin: "24px 0",
-    color: "rgba(0, 0, 0, 0.6)",
-  }),
-  mainControls: css({
-    display: "flex",
-    alignItems: "center",
-    button: { marginRight: 16 },
-  }),
-  dataInput: css({
-    alignSelf: "stretch",
-    margin: "32px 0",
-  }),
 };
 
 export default Home;
