@@ -18,7 +18,7 @@ export const moviesEpic: Epic = (
         const result = await client.query({
           query: GET_ALL_MOVIES,
         });
-        return actions.loaded({ data: result.data });
+        return actions.loaded({ data: result.data.allMovies.nodes });
       } catch (err) {
         return actions.loadError();
       }
