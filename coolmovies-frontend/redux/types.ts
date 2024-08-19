@@ -14,4 +14,5 @@ export type Movie = {
   title: string;
   movieDirectorId: number;
   releaseDate: string;
+  movieReviewsByMovieId: { nodes: { rating: number }[] };
 };

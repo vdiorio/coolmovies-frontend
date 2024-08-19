@@ -9,6 +9,11 @@ export const GET_ALL_MOVIES = gql`
         title
         movieDirectorId
         releaseDate
+        movieReviewsByMovieId {
+          nodes {
+            rating
+          }
+        }
       }
     }
   }
