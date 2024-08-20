@@ -5,14 +5,7 @@ import MovieListSkelleton from "./DetailedMovieCardSkelleton"; // Ensure you hav
 import DetailedMovieCard from ".";
 import { Movie } from "../../redux/types";
 
-//Mocking jest image
-jest.mock("next/image", () => {
-  return ({ src, ...props }) => {
-    return <img src={src} {...props} />;
-  };
-});
-
-const mockStore = (initialState: any) => {
+const mockStore = (initialState: any): any => {
   return {
     getState: () => initialState,
     subscribe: jest.fn(),
@@ -69,9 +62,7 @@ describe("DetailedMovieCard Component", () => {
       "src",
       mockMovie.imgUrl
     );
-    expect(screen.getByTestId("rating-value")).toHaveTextContent(
-      mockMovie.movieReviewsByMovieId?.nodes[0].rating.toString()
-    );
+    expect(screen.getByTestId("rating-value")).toHaveTextContent("5");
     expect(screen.getByTestId("movie-release")).toHaveTextContent(
       `Release Date: ${new Date(mockMovie.releaseDate).toLocaleDateString(
         "en-US"

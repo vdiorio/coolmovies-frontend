@@ -1,9 +1,9 @@
-import { Skeleton } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 
 export default function MovieListSkelleton() {
   const length = Math.max(1, Math.floor(window.innerWidth / 260)) * 2;
   return (
-    <>
+    <Box data-testid="loading-skeleton">
       {Array.from({ length }).map((_, index) => (
         <Skeleton
           key={index}
@@ -14,6 +14,6 @@ export default function MovieListSkelleton() {
           sx={{ backgroundColor: "rgb(49 93 101 / 20%)" }}
         />
       ))}
-    </>
+    </Box>
   );
 }
