@@ -1,9 +1,9 @@
-import { Skeleton } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 
 export default function MovieListSkelleton() {
   const length = Math.max(1, Math.floor(window.innerHeight / 140));
   return (
-    <>
+    <Box data-testid="loading-skeleton">
       <Skeleton
         variant="rectangular"
         animation="wave"
@@ -50,6 +50,6 @@ export default function MovieListSkelleton() {
           width: "70%",
         }}
       />
-    </>
+    </Box>
   );
 }

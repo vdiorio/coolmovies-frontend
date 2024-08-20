@@ -49,7 +49,7 @@ export class MovieViewModel {
   }
 
   public getReleaseDate(): string {
-    return new Date(this.releaseDate).toLocaleDateString();
+    return new Date(this.releaseDate).toLocaleDateString("en-US");
   }
 
   public getRating(): number {
