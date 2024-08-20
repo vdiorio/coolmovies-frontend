@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
 import { Box, Typography } from "@mui/material";
 import type { NextPage } from "next";
-import { movieActions, useAppDispatch, useAppSelector } from "../../redux";
+import { movieActions, useAppDispatch, useAppSelector } from "../../../redux";
 import { useEffect } from "react";
-import MovieListSkelleton from "./MovieListSkelleton";
-import MovieCard from "./MovieCard";
+import MovieListSkelleton from "../MovieListSkelleton";
+import MovieCard from "../MovieCard";
 
 const MovieList: NextPage = () => {
   const dispatch = useAppDispatch();

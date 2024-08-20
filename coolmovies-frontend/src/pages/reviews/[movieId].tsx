@@ -1,13 +1,13 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import ReviewList from "../../components/ReviewList";
+import ReviewList from "../../components/Review/ReviewList";
 import { Button, Grid, Paper, Typography } from "@mui/material";
-import DetailedMovieCard from "../../components/DetailedMovieCard";
-import useStyles from "../style";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ReviewFormModal from "../../components/ReviewFormModal";
+import ReviewFormModal from "../../components/Review/ReviewFormModal";
 import { useState } from "react";
 import { Review } from "../../redux/types";
+import DetailedMovieCard from "../../components/Movie/DetailedMovieCard";
+import useStyles from "../style";
 
 const MoviePage: NextPage = () => {
   const [open, setOpen] = useState(false);

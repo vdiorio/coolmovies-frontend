@@ -1,10 +1,10 @@
 import { Box, Grid, Rating, Typography } from "@mui/material";
-import { MovieViewModel } from "../ViewModels/MovieViewModel";
-import { useAppSelector } from "../../redux";
 import Image from "next/image";
 import useStyles from "./styles";
 import StarIcon from "@mui/icons-material/Star";
-import MovieListSkelleton from "./DetailedMovieCardSkelleton";
+import { useAppSelector } from "../../../redux";
+import { MovieViewModel } from "../../ViewModels/MovieViewModel";
+import MovieListSkelleton from "../MovieListSkelleton";
 
 const DetailedMovieCard = () => {
   const movieState = useAppSelector((state) => state.reviews);

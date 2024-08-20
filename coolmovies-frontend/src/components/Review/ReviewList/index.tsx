@@ -1,12 +1,9 @@
-import { css } from "@emotion/react";
-import { Box, Typography } from "@mui/material";
-import type { NextPage } from "next";
-import { reviewsActions, useAppDispatch, useAppSelector } from "../../redux";
+import { Typography } from "@mui/material";
+import { reviewsActions, useAppDispatch, useAppSelector } from "../../../redux";
 import { useEffect } from "react";
-import ReviewListSkelleton from "./ReviewListSkelleton";
-import ReviewCard from "./ReviewCard.tsx";
-import { useRouter } from "next/router";
-import { Review } from "../../redux/types";
+import ReviewCard from "../ReviewCard.tsx";
+import { Review } from "../../../redux/types";
+import ReviewListSkelleton from "../ReviewListSkelleton";
 
 interface Props {
   movieId: string;

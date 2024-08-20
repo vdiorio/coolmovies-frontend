@@ -10,10 +10,8 @@ import {
 import Image from "next/image";
 import { ReviewViewModel } from "../../ViewModels/ReviewViewModel";
 import { Review } from "../../../redux/types";
-import { useRouter } from "next/router";
 import useStyles from "./styles";
-import editIcon from "../../../public/edit.svg";
-
+import editIcon from "../../../../public/edit.svg";
 interface Props {
   review: Review;
   handleEditClick: () => void;

@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
 import { Box, Paper, Typography } from "@mui/material";
 import type { NextPage } from "next";
-import MovieList from "../../components/MovieList";
+import MovieList from "../../components/Movie/MovieList";
 import useStyles from "./styles";
 
-const Home: NextPage = () => {
+const ReviewsMo: NextPage = () => {
   const styles = useStyles();
   return (
     <div css={styles.root}>
@@ -22,4 +22,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default ReviewsMo;

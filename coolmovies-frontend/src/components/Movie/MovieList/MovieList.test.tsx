@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import MovieList from ".";
-import { Movie } from "../../redux/types";
+import { Movie } from "../../../redux/types";
 
 const mockStore = (initialState: any): any => {
   return {

@@ -7,7 +7,7 @@ import { createStore } from "../redux";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ThemeProvider } from "@mui/material";
-import { muiCustomTheme } from "../theme";
+import { muiCustomTheme } from "../../theme";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const [store, setStore] = useState<EnhancedStore | null>(null);

@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { reviewsActions } from "../../redux";
+import { reviewsActions } from "../../../redux";
 import ReviewFormModal from ".";
-import { Review } from "../../redux/types";
+import { Review } from "../../../redux/types";
 
 const mockStore = (initialState: any): any => ({
   getState: () => initialState,

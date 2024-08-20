@@ -1,6 +1,6 @@
 import { Skeleton } from "@mui/material";
 
-export default function MovieListSkelleton() {
+export default function ReviewListSkelleton() {
   const length = Math.max(1, Math.floor(window.innerHeight / 140));
   return (
     <>

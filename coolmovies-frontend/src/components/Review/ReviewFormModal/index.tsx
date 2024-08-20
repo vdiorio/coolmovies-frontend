@@ -7,8 +7,8 @@ import {
   Button,
   Rating,
 } from "@mui/material";
-import { Review } from "../../redux/types";
-import { reviewsActions, useAppDispatch } from "../../redux";
+import { Review } from "../../../redux/types";
+import { reviewsActions, useAppDispatch } from "../../../redux";
 import useStyles from "./styles";
 
 interface Props {
