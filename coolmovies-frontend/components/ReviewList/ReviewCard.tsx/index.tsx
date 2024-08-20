@@ -3,34 +3,44 @@ import {
   Box,
   Card,
   CardContent,
-  CardMedia,
+  IconButton,
   Rating,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import { ReviewViewModel } from "../../ViewModels/ReviewViewModel";
 import { Review } from "../../../redux/types";
 import { useRouter } from "next/router";
 import useStyles from "./styles";
+import editIcon from "../../../public/edit.svg";
 
 interface Props {
   review: Review;
+  handleEditClick: () => void;
 }
 
-const ReviewCard = ({ review }: Props) => {
+const ReviewCard = ({ review, handleEditClick }: Props) => {
   const viewModel = new ReviewViewModel(review);
-  const router = useRouter();
-
   const styles = useStyles();
+
+  const showEditButton = viewModel.getId() === "1";
 
   return (
     <Card css={styles.root}>
-      <CardContent>
-        <Box display="flex" justifyContent="space-between" marginBottom={2}>
-          <Typography gutterBottom variant="h5" css={styles.title}>
-            {viewModel.getTitle()}
-          </Typography>
-          <Box display="flex" alignItems={"center"}>
-            <Typography gutterBottom variant="h5" css={styles.title}>
+      <CardContent sx={{ padding: "4px 16px 0 " }}>
+        <Box display="flex" justifyContent="space-between">
+          <Box display="flex" alignItems="center">
+            <Typography variant="h5" css={styles.title}>
+              {viewModel.getTitle()} - ({viewModel.getReviewAuthorName()})
+            </Typography>
+            {!showEditButton && (
+              <IconButton aria-label="edit" onClick={handleEditClick}>
+                <Image src={editIcon} width={25} height={25} alt="edit" />
+              </IconButton>
+            )}
+          </Box>
+          <Box display="flex" alignItems="center">
+            <Typography variant="h5" css={styles.title}>
               Rating:
             </Typography>
             <Rating

@@ -15,6 +15,7 @@ const useStyles = () => {
       fontSize: "1rem",
       margin: 0,
       textAlign: "center",
+      padding: "10px 0",
     }),
   };
 };

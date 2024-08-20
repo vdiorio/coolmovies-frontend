@@ -6,8 +6,14 @@ import { useEffect } from "react";
 import ReviewListSkelleton from "./ReviewListSkelleton";
 import ReviewCard from "./ReviewCard.tsx";
 import { useRouter } from "next/router";
+import { Review } from "../../redux/types";
 
-const ReviewList = ({ movieId }: { movieId: string }) => {
+interface Props {
+  movieId: string;
+  handleEditClick: (review: Review) => void;
+}
+
+const ReviewList = ({ movieId, handleEditClick }: Props) => {
   const dispatch = useAppDispatch();
   const reviewState = useAppSelector((state) => state.reviews);
 
@@ -27,7 +33,11 @@ const ReviewList = ({ movieId }: { movieId: string }) => {
     <>
       {reviewState.reviews ? (
         reviewState.reviews.map((review) => (
-          <ReviewCard key={review.id} review={review} />
+          <ReviewCard
+            key={review.id}
+            review={review}
+            handleEditClick={() => handleEditClick(review)}
+          />
         ))
       ) : (
         <ReviewListSkelleton />

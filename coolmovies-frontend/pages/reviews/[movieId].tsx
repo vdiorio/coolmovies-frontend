@@ -5,14 +5,30 @@ import { Button, Grid, Paper, Typography } from "@mui/material";
 import DetailedMovieCard from "../../components/DetailedMovieCard";
 import useStyles from "../style";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ReviewFormModal from "../../components/ReviewFormModal";
+import { useState } from "react";
+import { Review } from "../../redux/types";
 
 const MoviePage: NextPage = () => {
+  const [open, setOpen] = useState(false);
+  const [reviewEdit, setReviewEdit] = useState<Review | undefined>(undefined);
+
+  const handleCloseModal = () => {
+    setOpen(false);
+    setReviewEdit(undefined);
+  };
+
   const {
     query: { movieId },
   } = useRouter();
 
   const handleBackClick = () => {
     window.history.back();
+  };
+
+  const handleEditClick = (review: Review) => {
+    setReviewEdit(review);
+    setOpen(true);
   };
 
   const styles = useStyles();
@@ -42,9 +58,27 @@ const MoviePage: NextPage = () => {
           <DetailedMovieCard />
         </Grid>
         <Grid item xs={12} sm={8} md={8} lg={9} xl={10}>
-          <ReviewList movieId={movieId as string} />
+          <Button
+            onClick={() => setOpen(true)}
+            variant="contained"
+            sx={{
+              marginBottom: "1rem",
+            }}
+          >
+            Add Review
+          </Button>
+          <ReviewList
+            movieId={movieId as string}
+            handleEditClick={handleEditClick}
+          />
         </Grid>
       </Grid>
+      <ReviewFormModal
+        open={open}
+        handleClose={handleCloseModal}
+        movieId={movieId as string}
+        review={reviewEdit}
+      />
     </div>
   );
 };
