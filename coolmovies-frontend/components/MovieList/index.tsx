@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import MovieListSkelleton from "./MovieListSkelleton";
 import MovieCard from "./MovieCard";
 
-const MovieList = () => {
+const MovieList: NextPage = () => {
   const dispatch = useAppDispatch();
   const movieState = useAppSelector((state) => state.movies);
 
@@ -15,16 +15,20 @@ const MovieList = () => {
   }, [dispatch]);
 
   if (movieState.error)
-    return <Typography>{"Something went wrong :("}</Typography>;
+    return (
+      <Typography data-testid="error-message">
+        {"Something went wrong :("}
+      </Typography>
+    );
 
   return (
     <>
       {movieState.movies ? (
         movieState.movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard key={movie.id} movie={movie} data-testid="movie-card" />
         ))
       ) : (
-        <MovieListSkelleton />
+        <MovieListSkelleton data-testid="loading-skeleton" />
       )}
     </>
   );
