@@ -15,7 +15,7 @@ interface Props {
   movie: Movie;
 }
 
-const MovieCard = ({ movie }: Props) => {
+const MovieCard = ({ movie, ...props }: Props) => {
   const viewModel = new MovieViewModel(movie);
   const router = useRouter();
 
@@ -24,7 +24,7 @@ const MovieCard = ({ movie }: Props) => {
   };
 
   return (
-    <Card css={styles.root} onClick={handleCardClick}>
+    <Card css={styles.root} onClick={handleCardClick} {...props}>
       <CardMedia
         css={styles.cardMedia}
         image={viewModel.getImgUrl()}

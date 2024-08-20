@@ -70,7 +70,7 @@ const ReviewFormModal = ({ open, handleClose, movieId, review }: Props) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box css={style.root} component="form" onSubmit={handleSubmit}>
-        <Typography variant="h6" component="h2">
+        <Typography variant="h6" component="h2" data-testid="modal-title">
           {review ? "Edit" : "Create"} a Review
         </Typography>
         <Typography component="legend">Rating:</Typography>
@@ -78,6 +78,7 @@ const ReviewFormModal = ({ open, handleClose, movieId, review }: Props) => {
           name="movie-rating"
           value={rating}
           onChange={(_e, newValue) => setRating(newValue || 0)}
+          data-testid="movie-rating"
         />
         <TextField
           margin="normal"
@@ -86,6 +87,7 @@ const ReviewFormModal = ({ open, handleClose, movieId, review }: Props) => {
           label="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          inputProps={{ "data-testid": "review-title" }}
         />
         <TextField
           margin="normal"
@@ -96,12 +98,14 @@ const ReviewFormModal = ({ open, handleClose, movieId, review }: Props) => {
           label="Body"
           value={body}
           onChange={(e) => setBody(e.target.value)}
+          inputProps={{ "data-testid": "review-body" }}
         />
         <Button
           type="submit"
           variant="contained"
           sx={{ mt: 3, mb: 2, color: "white" }}
           disabled={!title || !body}
+          data-testid="submit-button"
         >
           Submit Review
         </Button>
