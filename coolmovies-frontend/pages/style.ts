@@ -11,7 +11,7 @@ const useStyles = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      background: theme.palette.background.default || "#f5f5f5", // Usando o valor do tema ou um fallback
+      background: theme.palette.background.default || "#f5f5f5",
     }),
     headerText: css({
       color: theme.palette.primary.contrastText,
@@ -27,7 +27,7 @@ const useStyles = () => {
       borderRadius: 0,
     }),
     navText: css({
-      color: theme.palette.text.primary, // Acessando a cor secondary do tema
+      color: theme.palette.text.primary,
     }),
     hero: css({
       flex: 1,
@@ -41,7 +41,7 @@ const useStyles = () => {
     }),
     heroIcon: css({
       fontSize: "5rem",
-      color: theme.palette.primary.main, // Usando primary do tema
+      color: theme.palette.primary.main,
     }),
     heading: css({
       fontSize: "3.5rem",
@@ -62,7 +62,7 @@ const useStyles = () => {
         color: theme.palette.primary.contrastText,
       },
       a: {
-        color: theme.palette.primary.main, // Usando primary do tema para links
+        color: theme.palette.primary.main,
         textDecoration: "none",
         "&:hover": {
           textDecoration: "underline",
@@ -83,10 +83,10 @@ const useStyles = () => {
       marginTop: 32,
       fontSize: "1.1rem",
       padding: "12px 24px",
-      backgroundColor: theme.palette.primary.main, // Usando primary do tema para o background do botão
-      color: theme.palette.secondary.contrastText, // Usando a cor de contraste de secondary do tema
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.secondary.contrastText,
       "&:hover": {
-        backgroundColor: theme.palette.primary.dark || "#005bb5", // Usando primary.dark ou um fallback
+        backgroundColor: theme.palette.primary.dark || "#005bb5",
       },
     }),
   };

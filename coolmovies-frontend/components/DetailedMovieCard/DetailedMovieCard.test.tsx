@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { createStore } from "../../redux"; // Adjust the path as necessary
-import MovieListSkelleton from "./DetailedMovieCardSkelleton"; // Ensure you have this component
 import DetailedMovieCard from ".";
 import { Movie } from "../../redux/types";
 

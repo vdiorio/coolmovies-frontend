@@ -1,11 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { createStore } from "../../redux"; // Adjust the path as necessary
-import MovieList from "."; // Ensure you have this component
-import { useRouter } from "next/router";
+import MovieList from ".";
 import { Movie } from "../../redux/types";
 
-const mockStore = (initialState: any) => {
+const mockStore = (initialState: any): any => {
   return {
     getState: () => initialState,
     subscribe: jest.fn(),

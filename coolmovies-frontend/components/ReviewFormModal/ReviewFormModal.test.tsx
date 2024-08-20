@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { reviewsActions } from "../../redux"; // Ensure this is imported
+import { reviewsActions } from "../../redux";
 import ReviewFormModal from ".";
 import { Review } from "../../redux/types";
 
@@ -17,8 +17,8 @@ jest.mock("../../redux", () => {
   return {
     ...originalModule,
     reviewsActions: {
-      create: jest.fn(), // Mock the create action
-      update: jest.fn(), // Mock the update action
+      create: jest.fn(),
+      update: jest.fn(),
     },
     useAppDispatch: () => mockDispatch,
   };
@@ -28,7 +28,7 @@ describe("ReviewFormModal Component", () => {
   const handleClose = jest.fn();
 
   beforeEach(() => {
-    jest.clearAllMocks(); // Clear mocks before each test
+    jest.clearAllMocks();
   });
 
   const renderComponent = (props: {
@@ -96,19 +96,17 @@ describe("ReviewFormModal Component", () => {
         movieId: "",
       });
 
-      // Simulate form input
       fireEvent.change(screen.getByLabelText(/title/i), {
         target: { value: "My Review Title" },
       });
       fireEvent.change(screen.getByLabelText(/body/i), {
         target: { value: "This is a review body." },
       });
-      fireEvent.click(screen.getByRole("radio", { name: /3 star/i }));
+      fireEvent.click(screen.getByRole("radio", { name: /5 star/i }));
       fireEvent.click(screen.getByTestId("submit-button"));
 
-      // Assertions
       expect(reviewsActions.create).toHaveBeenCalledWith({
-        movieId: expect.any(String), // replace with actual movieId if needed
+        movieId: expect.any(String),
         title: "My Review Title",
         body: "This is a review body.",
         rating: 5,
@@ -137,7 +135,6 @@ describe("ReviewFormModal Component", () => {
         movieId: "",
       });
 
-      // Simulate form input
       fireEvent.change(screen.getByLabelText(/title/i), {
         target: { value: "Updated Review Title" },
       });
@@ -151,7 +148,7 @@ describe("ReviewFormModal Component", () => {
         movieId: expect.any(String),
         title: "Updated Review Title",
         body: "This is an updated review body.",
-        rating: 5, // Update this to match the selected rating
+        rating: 5,
         id: existingReview.id,
         nodeId: existingReview.nodeId,
       });

@@ -5,8 +5,6 @@ import { useRouter } from "next/router";
 import MovieIcon from "@mui/icons-material/Movie";
 import useStyles from "./style";
 
-// Front-end test for ecoPortal selective process
-
 const primary = "#197655";
 const secondary = "#ffffff";
 
