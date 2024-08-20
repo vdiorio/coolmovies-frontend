@@ -36,22 +36,16 @@ const MoviePage: NextPage = () => {
   return (
     <div css={styles.root}>
       <Paper elevation={3} css={styles.navBar}>
-        <Grid container>
-          <Grid xs={1}>
-            <Button
-              onClick={handleBackClick}
-              variant="contained"
-              css={styles.headerBack}
-            >
-              <ArrowBackIcon />
-            </Button>
-          </Grid>
-          <Grid xs={11}>
-            <Typography text-align="center" css={styles.headerText}>
-              {"Reviews:"}
-            </Typography>
-          </Grid>
-        </Grid>
+        <Button
+          onClick={handleBackClick}
+          variant="contained"
+          css={styles.headerBack}
+        >
+          <ArrowBackIcon />
+        </Button>
+        <Typography text-align="center" css={styles.headerText}>
+          {"Reviews:"}
+        </Typography>
       </Paper>
       <Grid container spacing={2} padding={2}>
         <Grid item xs={12} sm={4} md={4} lg={3} xl={2}>

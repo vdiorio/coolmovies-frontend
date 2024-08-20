@@ -23,8 +23,9 @@ const useStyles = () => {
       alignSelf: "stretch",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       borderRadius: 0,
+      gap: 20,
     }),
     navText: css({
       color: theme.palette.text.primary,
