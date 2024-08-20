@@ -28,5 +28,7 @@ export type Review = {
   title: string;
   body: string;
   rating: number;
+  movieId: string;
+  nodeId: number;
   userByUserReviewerId: { id: string; name: string };
 };

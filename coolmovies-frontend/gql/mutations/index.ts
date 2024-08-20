@@ -5,8 +5,8 @@ export const CREATE_MOVIE_REVIEW = gql`
     $title: String!
     $body: String!
     $rating: Int!
-    $movieId: ID!
-    $userReviewerId: ID!
+    $movieId: UUID!
+    $userReviewerId: UUID!
   ) {
     createMovieReview(
       input: {
@@ -37,13 +37,15 @@ export const CREATE_MOVIE_REVIEW = gql`
 
 export const EDIT_MOVIE_REVIEW = gql`
   mutation EditMovieReview(
-    $id: ID!
+    $id: UUID!
+    $nodeId: ID!
     $title: String
     $body: String
     $rating: Int
   ) {
     updateMovieReview(
       input: {
+        nodeId: $nodeId
         movieReviewPatch: {
           id: $id
           title: $title

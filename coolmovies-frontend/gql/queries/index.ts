@@ -40,6 +40,8 @@ export const GET_REVIEWS_BY_MOVIE_ID = gql`
         title
         body
         rating
+        movieId
+        nodeId
         userByUserReviewerId {
           name
         }

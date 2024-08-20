@@ -14,10 +14,23 @@ export const movieSlice = createSlice({
   name: "GET_REVIEWS_BY_MOVIE_ID",
   reducers: {
     fetch: (state, action: PayloadAction<{ movieId: string }>) => {},
+    update: (
+      state,
+      action: PayloadAction<Omit<Review, "userByUserReviewerId">>
+    ) => {},
+    create: (
+      state,
+      action: PayloadAction<
+        Omit<Review, "id" | "userByUserReviewerId" | "nodeId">
+      >
+    ) => {},
     clearData: (state) => {
       state.movie = undefined;
       state.reviews = undefined;
       state.error = undefined;
+    },
+    clearReviews: (state) => {
+      state.reviews = undefined;
     },
     loaded: (
       state,
