@@ -1,37 +1,21 @@
-import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
+import { screen } from "@testing-library/react";
 import MovieList from ".";
 import { Movie } from "../../../redux/types";
-
-const mockStore = (initialState: any): any => {
-  return {
-    getState: () => initialState,
-    subscribe: jest.fn(),
-    dispatch: jest.fn(),
-  };
-};
+import renderWithMockedStore from "../../../../tests/components/renderWithMockedStore";
 
 describe("MovieList Component", () => {
   test("renders loading skeleton when there is no movie data", () => {
-    const store = mockStore({ movies: { movies: null, error: null } });
+    const initialState = { movies: { movies: null, error: null } };
 
-    render(
-      <Provider store={store}>
-        <MovieList />
-      </Provider>
-    );
+    renderWithMockedStore(<MovieList />, initialState);
 
     expect(screen.getByTestId("loading-skeleton")).toBeInTheDocument();
   });
 
   test("renders error message when there is an error", () => {
-    const store = mockStore({ movies: { movies: null, error: true } });
+    const initialState = { movies: { movies: null, error: true } };
 
-    render(
-      <Provider store={store}>
-        <MovieList />
-      </Provider>
-    );
+    renderWithMockedStore(<MovieList />, initialState);
 
     expect(screen.getByTestId("error-message")).toHaveTextContent(
       "Something went wrong :("
@@ -78,13 +62,9 @@ describe("MovieList Component", () => {
       },
     ];
 
-    const store = mockStore({ movies: { movies: mockMovies, error: null } });
+    const initialState = { movies: { movies: mockMovies, error: null } };
 
-    render(
-      <Provider store={store}>
-        <MovieList />
-      </Provider>
-    );
+    renderWithMockedStore(<MovieList />, initialState);
 
     expect(screen.getAllByTestId("movie-card")).toHaveLength(mockMovies.length);
   });

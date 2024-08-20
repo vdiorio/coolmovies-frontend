@@ -12,8 +12,8 @@ const mockStore = (initialState: any): any => ({
 
 const mockDispatch = jest.fn();
 
-jest.mock("../../redux", () => {
-  const originalModule = jest.requireActual("../../redux");
+jest.mock("../../../redux", () => {
+  const originalModule = jest.requireActual("../../../redux");
   return {
     ...originalModule,
     reviewsActions: {

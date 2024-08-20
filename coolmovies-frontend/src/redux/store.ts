@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import {
+  currentUserEpics,
+  currentUserReducer,
   movieEpics,
   movieReducer,
   reviewsEpics,
@@ -9,7 +11,7 @@ import {
 import { combineEpics, createEpicMiddleware } from "redux-observable";
 import { CreateStoreOptions } from "./types";
 
-const rootEpic = combineEpics(movieEpics, reviewsEpics);
+const rootEpic = combineEpics(movieEpics, reviewsEpics, currentUserEpics);
 
 export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
   const epicMiddleware = createEpicMiddleware({
@@ -22,6 +24,7 @@ export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
     reducer: {
       movies: movieReducer,
       reviews: reviewsReducer,
+      currentUser: currentUserReducer,
     },
   });
 

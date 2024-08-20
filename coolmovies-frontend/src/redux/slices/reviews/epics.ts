@@ -20,14 +20,12 @@ export const reviewsEpic: Epic = (
     filter(actions.fetch.match),
     switchMap(async (action) => {
       try {
-        console.log("DISGRAÇAAAA");
         const { movieId } = action.payload;
         const result = await client.query({
           query: GET_REVIEWS_BY_MOVIE_ID,
           variables: { movieId },
           fetchPolicy: "network-only",
         });
-        console.log(result.data.allMovieReviews.nodes);
         return actions.loaded({
           reviews: result.data.allMovieReviews.nodes,
           movie: result.data.movieById,
@@ -62,7 +60,7 @@ export const editReviewsEpic: Epic = (
 
 export const createReviewsEpic: Epic = (
   action$: Observable<SliceAction["create"]>,
-  _state$: StateObservable<RootState>,
+  state$: StateObservable<RootState>,
   { client }: EpicDependencies
 ) =>
   action$.pipe(
@@ -70,10 +68,7 @@ export const createReviewsEpic: Epic = (
     switchMap(async (action) => {
       try {
         const { title, body, rating, movieId } = action.payload;
-        const currentUserResult = await client.query({
-          query: GET_CURRENT_USER,
-          variables: { movieId },
-        });
+
         await client.mutate({
           mutation: CREATE_MOVIE_REVIEW,
           variables: {
@@ -81,7 +76,7 @@ export const createReviewsEpic: Epic = (
             body,
             rating,
             movieId,
-            userReviewerId: currentUserResult.data.currentUser.id,
+            userReviewerId: state$.value.currentUser.user?.id as string,
           },
         });
         actions.clearReviews();

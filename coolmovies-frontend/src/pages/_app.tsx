@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import React, { FC, useState } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import Head from "next/head";
-import { createStore } from "../redux";
+import { createStore, currentUserActions } from "../redux";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ThemeProvider } from "@mui/material";
@@ -21,6 +21,14 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     const store = createStore({ epicDependencies: { client } });
     setStore(store);
   }, []);
+
+  React.useEffect(() => {
+    if (!store) return;
+    const state = store.getState();
+    if (!state.currentUser.user) {
+      store.dispatch(currentUserActions.fetch());
+    }
+  }, [store]);
 
   if (!store) return <>{"Loading..."}</>;
 

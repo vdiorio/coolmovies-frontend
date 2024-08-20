@@ -16,7 +16,6 @@ const ReviewList = ({ movieId, handleEditClick }: Props) => {
 
   useEffect(() => {
     dispatch(reviewsActions.fetch({ movieId }));
-    console.log(movieId);
 
     return () => {
       dispatch(reviewsActions.clearData());

@@ -43,6 +43,7 @@ export const GET_REVIEWS_BY_MOVIE_ID = gql`
         movieId
         nodeId
         userByUserReviewerId {
+          id
           name
         }
       }

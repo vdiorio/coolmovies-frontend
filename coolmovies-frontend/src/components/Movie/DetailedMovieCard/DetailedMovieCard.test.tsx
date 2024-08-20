@@ -1,25 +1,13 @@
-import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
+import { screen } from "@testing-library/react";
 import DetailedMovieCard from ".";
-import { Movie } from "../../redux/types";
-
-const mockStore = (initialState: any): any => {
-  return {
-    getState: () => initialState,
-    subscribe: jest.fn(),
-    dispatch: jest.fn(),
-  };
-};
+import renderWithMockedStore from "../../../../tests/components/renderWithMockedStore";
+import { Movie } from "../../../redux/types";
 
 describe("DetailedMovieCard Component", () => {
   test("renders loading skeleton when there is no movie data", () => {
-    const store = mockStore({ reviews: { movie: null } });
+    const initialState = { reviews: { movie: null } };
 
-    render(
-      <Provider store={store}>
-        <DetailedMovieCard />
-      </Provider>
-    );
+    renderWithMockedStore(<DetailedMovieCard />, initialState);
 
     expect(screen.getByTestId("loading-skeleton")).toBeInTheDocument();
   });
@@ -44,13 +32,9 @@ describe("DetailedMovieCard Component", () => {
       },
     };
 
-    const store = mockStore({ reviews: { movie: mockMovie } });
+    const initialState = { reviews: { movie: mockMovie } };
 
-    render(
-      <Provider store={store}>
-        <DetailedMovieCard />
-      </Provider>
-    );
+    renderWithMockedStore(<DetailedMovieCard />, initialState);
 
     expect(screen.getByTestId("detailed-movie-card")).toBeInTheDocument();
     expect(screen.getByTestId("movie-title")).toHaveTextContent(

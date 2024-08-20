@@ -12,6 +12,7 @@ import { ReviewViewModel } from "../../ViewModels/ReviewViewModel";
 import { Review } from "../../../redux/types";
 import useStyles from "./styles";
 import editIcon from "../../../../public/edit.svg";
+import { useAppSelector } from "../../../redux";
 interface Props {
   review: Review;
   handleEditClick: () => void;
@@ -20,6 +21,11 @@ interface Props {
 const ReviewCard = ({ review, handleEditClick }: Props) => {
   const viewModel = new ReviewViewModel(review);
   const styles = useStyles();
+
+  const currentUser = useAppSelector((state) => state.currentUser?.user);
+
+  const shouldRenderEditButton =
+    viewModel.getReviewAuthorId() === currentUser?.id;
 
   return (
     <Card css={styles.root} data-testid="review-card">
@@ -37,13 +43,15 @@ const ReviewCard = ({ review, handleEditClick }: Props) => {
             >
               {viewModel.getTitle()} - ({viewModel.getReviewAuthorName()})
             </Typography>
-            <IconButton
-              aria-label="edit"
-              onClick={handleEditClick}
-              data-testid="edit-button"
-            >
-              <Image src={editIcon} width={25} height={25} alt="edit" />
-            </IconButton>
+            {shouldRenderEditButton && (
+              <IconButton
+                aria-label="edit"
+                onClick={handleEditClick}
+                data-testid="edit-button"
+              >
+                <Image src={editIcon} width={25} height={25} alt="edit" />
+              </IconButton>
+            )}
           </Box>
           <Box display="flex" alignItems="center" data-testid="rating-box">
             <Typography
