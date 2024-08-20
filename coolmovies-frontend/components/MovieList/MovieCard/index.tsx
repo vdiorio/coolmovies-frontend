@@ -41,7 +41,7 @@ const MovieCard = ({ movie }: Props) => {
         </Typography>
         <Box display="flex" gap={1}>
           <Rating
-            precision={0.01}
+            precision={0.1}
             value={viewModel.getRating()}
             readOnly
             size="small"

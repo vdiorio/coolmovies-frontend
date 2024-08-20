@@ -43,7 +43,7 @@ const DetailedMovieCard = () => {
 
         <Box display="flex" gap={1}>
           <Rating
-            precision={0.01}
+            precision={0.1}
             value={viewModel.getRating()}
             emptyIcon={
               <StarIcon

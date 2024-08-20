@@ -23,35 +23,52 @@ const ReviewCard = ({ review, handleEditClick }: Props) => {
   const viewModel = new ReviewViewModel(review);
   const styles = useStyles();
 
-  const showEditButton = viewModel.getId() === "1";
-
   return (
-    <Card css={styles.root}>
-      <CardContent sx={{ padding: "4px 16px 0 " }}>
-        <Box display="flex" justifyContent="space-between">
-          <Box display="flex" alignItems="center">
-            <Typography variant="h5" css={styles.title}>
+    <Card css={styles.root} data-testid="review-card">
+      <CardContent sx={{ padding: "4px 16px 0 " }} data-testid="card-content">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          data-testid="flex-box"
+        >
+          <Box display="flex" alignItems="center" data-testid="author-box">
+            <Typography
+              variant="h5"
+              css={styles.title}
+              data-testid="review-title"
+            >
               {viewModel.getTitle()} - ({viewModel.getReviewAuthorName()})
             </Typography>
-            {!showEditButton && (
-              <IconButton aria-label="edit" onClick={handleEditClick}>
-                <Image src={editIcon} width={25} height={25} alt="edit" />
-              </IconButton>
-            )}
+            <IconButton
+              aria-label="edit"
+              onClick={handleEditClick}
+              data-testid="edit-button"
+            >
+              <Image src={editIcon} width={25} height={25} alt="edit" />
+            </IconButton>
           </Box>
-          <Box display="flex" alignItems="center">
-            <Typography variant="h5" css={styles.title}>
+          <Box display="flex" alignItems="center" data-testid="rating-box">
+            <Typography
+              variant="h5"
+              css={styles.title}
+              data-testid="rating-label"
+            >
               Rating:
             </Typography>
             <Rating
-              precision={0.01}
+              precision={0.1}
               value={viewModel.getRating()}
               readOnly
               size="small"
+              data-testid="review-rating"
             />
           </Box>
         </Box>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          data-testid="review-body"
+        >
           {viewModel.getBody()}
         </Typography>
       </CardContent>
