@@ -12,7 +12,7 @@ import { muiCustomTheme } from "../theme";
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const [store, setStore] = useState<EnhancedStore | null>(null);
   React.useEffect(() => {
-    const uri = process.env.NEXT_PUBLIC_GRAPHQL_URL || "/graphql";
+    const uri = "/graphql";
     const client = new ApolloClient({
       cache: new InMemoryCache(),
       uri,
