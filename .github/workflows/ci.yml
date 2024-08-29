@@ -1,0 +1,69 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+      - "**/feature/*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        working-directory: ./coolmovies-frontend
+        run: npm install --legacy-peer-deps
+
+      - name: Run tests
+        id: test
+        working-directory: ./coolmovies-frontend
+        run: |
+          npm test
+          if [ $? -eq 0 ]; then
+            echo "result=success" >> $GITHUB_ENV
+          else
+            echo "result=failure" >> $GITHUB_ENV
+          fi
+        continue-on-error: true
+
+      - name: Check GITHUB_TOKEN permissions # Check GITHUB_TOKEN permissions
+        run: |
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/actions/permissions
+
+      - name: Comment on PR or issue
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Ensure you use the GitHub token
+          script: |
+            const { number } = context.payload.pull_request;
+            const testResult = process.env.result || 'failure';
+
+            let message = (testResult === 'success')
+              ? 'All tests passed successfully!'
+              : 'Some tests failed!';
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: number,
+              body: message,
+            });
