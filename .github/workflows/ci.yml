@@ -1,0 +1,62 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+      - "**/feature/*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        working-directory: ./coolmovies-frontend
+        run: npm install
+
+      - name: Run tests
+        id: test
+        working-directory: ./coolmovies-frontend
+        run: |
+          npm test
+        continue-on-error: true
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { GITHUB_TOKEN, GITHUB_REPOSITORY } = process.env;
+            const octokit = require('@octokit/rest')({
+              auth: GITHUB_TOKEN,
+            });
+
+            const { number } = context.payload.pull_request;
+
+            const message = `${{ steps.test.outcome == 'success' ? 'All tests passed successfully!' : 'Some tests failed!' }}\n\n`;
+            if (steps.test.outcome !== 'success') {
+              message += `**Errors:**\n\`\`\`\n${steps.test.outputs['test-summary']}\n\`\`\``;
+            }
+
+            await octokit.issues.createComment({
+              owner: GITHUB_REPOSITORY.split('/')[0],
+              repo: GITHUB_REPOSITORY.split('/')[1],
+              issue_number: number,
+              body: message,
+            });
