@@ -42,10 +42,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { GITHUB_TOKEN, GITHUB_REPOSITORY } = process.env;
-            const octokit = require('@octokit/rest')({
-              auth: GITHUB_TOKEN,
-            });
             const { number } = context.payload.pull_request;
 
             // Create message based on test outcome
@@ -54,12 +50,12 @@ jobs:
               message = 'All tests passed successfully!';
             } else {
               message = 'Some tests failed!';
-              // You can log the error output here if needed
             }
 
-            await octokit.issues.createComment({
-              owner: GITHUB_REPOSITORY.split('/')[0],
-              repo: GITHUB_REPOSITORY.split('/')[1],
+            // Use the github object to create a comment
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               issue_number: number,
               body: message,
             });
