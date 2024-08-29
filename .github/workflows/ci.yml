@@ -35,6 +35,7 @@ jobs:
         working-directory: ./coolmovies-frontend
         run: |
           npm test
+          echo "result=$(if [ $? -eq 0 ]; then echo 'success'; else echo 'failure'; fi)" >> $GITHUB_ENV
         continue-on-error: true
 
       - name: Comment on PR
