@@ -17,6 +17,10 @@ jobs:
       matrix:
         node-version: [18.x]
 
+    permissions:
+      issues: write
+      pull_requests: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
