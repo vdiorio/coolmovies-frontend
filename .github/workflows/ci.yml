@@ -42,7 +42,7 @@ jobs:
           fi
         continue-on-error: true
 
-      - name: Check GITHUB_TOKEN permissions
+      - name: Check GITHUB_TOKEN permissions # Check GITHUB_TOKEN permissions
         run: |
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
