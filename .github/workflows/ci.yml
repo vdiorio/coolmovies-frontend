@@ -46,6 +46,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Ensure you use the GitHub token
           script: |
             const { number } = context.payload.pull_request;
             const testResult = process.env.result || 'failure';
@@ -54,7 +55,7 @@ jobs:
               ? 'All tests passed successfully!'
               : 'Some tests failed!';
 
-            await github.issues.createComment({
+            await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: number,
