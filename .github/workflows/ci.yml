@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x]
 
     steps:
       - name: Checkout code
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./coolmovies-frontend
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Run tests
         id: test
