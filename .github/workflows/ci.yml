@@ -35,7 +35,11 @@ jobs:
         working-directory: ./coolmovies-frontend
         run: |
           npm test
-          echo "result=$(if [ $? -eq 0 ]; then echo 'success'; else echo 'failure'; fi)" >> $GITHUB_ENV
+          if [ $? -eq 0 ]; then
+            echo "result=success" >> $GITHUB_ENV
+          else
+            echo "result=failure" >> $GITHUB_ENV
+          fi
         continue-on-error: true
 
       - name: Comment on PR
@@ -44,16 +48,12 @@ jobs:
         with:
           script: |
             const { number } = context.payload.pull_request;
+            const testResult = process.env.result || 'failure';
 
-            // Create message based on test outcome
-            let message;
-            if (steps.test.outcome === 'success') {
-              message = 'All tests passed successfully!';
-            } else {
-              message = 'Some tests failed!';
-            }
+            let message = (testResult === 'success')
+              ? 'All tests passed successfully!'
+              : 'Some tests failed!';
 
-            // Use the github object to create a comment
             await github.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
