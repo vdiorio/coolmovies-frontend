@@ -46,7 +46,7 @@ jobs:
           fi
         continue-on-error: true
 
-      - name: Comment on PR
+      - name: Comment on PR or issue
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v6
         with:
